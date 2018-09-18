@@ -4,7 +4,6 @@ class Board {
     this.columns = 7;
     this.spaces = this.createSpaces();
   }
-
   /**
    * Generates 2D array of spaces.
    * @return  {Array}     An array of space objects
@@ -14,19 +13,22 @@ class Board {
     const spaces = [];
 
     for (let x = 0; x < this.columns; x++) {
-      const column = [];
+      const col = [];
 
       for (let y = 0; y < this.rows; y++) {
-        const space = new Space(i, this);
-        column.push(space);
+        const space = new Space(x, y);
+        col.push(space);
       }
-      spaces.push(column);
+      spaces.push(col);
     }
+    // console.log(spaces);
     return spaces;
    }
    drawHTMLBoard(){
-      for (let i = 0; i <= spaces.length; i++) {
-         drawSVGSpace(this.spaces[i]);
+      for (let column of this.spaces) {
+         for (let space of column) {
+            space.drawSVGSpace();
+         }
       }
    }
 }
