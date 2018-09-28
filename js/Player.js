@@ -18,7 +18,6 @@ class Player {
          let token = new Token(i, this);
          tokens.push(token);
       }
-
       return tokens;
    }
 
